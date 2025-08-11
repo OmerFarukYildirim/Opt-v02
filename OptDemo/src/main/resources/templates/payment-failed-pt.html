@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ödeme Başarısız</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .header {
+      border-bottom: 2px solid #dc3545;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    .error-icon {
+      color: #dc3545;
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #dc3545;
+      font-size: 28px;
+      margin: 0;
+    }
+    .details {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      text-align: left;
+    }
+    .detail-row {
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .detail-label {
+      font-weight: bold;
+      color: #555;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #dc3545;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="error-icon">✗</div>
+    <h1>Ödeme Başarısız</h1>
+  </div>
+
+  <p>Merhaba <span th:text="${customerName}"></span>,</p>
+  <p>**<span th:text="${serviceName}"></span>** hizmetiniz için yaptığınız ödeme işlemi maalesef başarısız oldu.</p>
+
+  <div class="details">
+    <div class="detail-row">
+      <span class="detail-label">Başarısızlık Nedeni:</span>
+      <span th:text="${failureReason}"></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Deneme Tutarı:</span>
+      <span th:text="${amount}"></span>
+    </div>
+  </div>
+
+  <p>Lütfen ödeme bilgilerinizi kontrol edip tekrar deneyin veya müşteri hizmetlerimizle iletişime geçin.</p>
+  <a class="button" th:href="@{${paymentLink}}">Ödemeyi Tekrar Dene</a>
+
+  <div class="footer">
+    <p>Yardıma mı ihtiyacınız var? Bize ulaşın: support@personaltrainerapp.com</p>
+    <p>© <span th:text="${currentYear}">2025</span> Personal Trainer App. Tüm hakları saklıdır.</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Randevu Onayı ve Detayları</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #28a745;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    h1 {
+      color: #28a745;
+      font-size: 28px;
+      margin: 0;
+    }
+    .details {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+    .detail-row {
+      margin-bottom: 15px;
+    }
+    .detail-label {
+      font-weight: bold;
+      color: #555;
+      display: block;
+    }
+    .button {
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Randevunuz Onaylandı</h1>
+  </div>
+
+  <p>Merhaba <span th:text="${customerName}"></span>,</p>
+  <p>Antrenörünüz <span th:text="${trainerName}"></span> ile olan randevunuz onaylandı. Detaylar aşağıdadır:</p>
+
+  <div class="details">
+    <div class="detail-row">
+      <span class="detail-label">Randevu Tarihi:</span>
+      <span th:text="${appointmentDate}"></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Randevu Saati:</span>
+      <span th:text="${appointmentTime}"></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Randevu Türü:</span>
+      <span th:text="${appointmentType}"></span>
+    </div>
+  </div>
+
+  <p>Seansınıza katılmak için lütfen zamanında aşağıdaki bağlantıya tıklayın:</p>
+  <a class="button" th:href="@{${joinLink}}">Seansa Katıl</a>
+
+  <div class="footer">
+    <p>Herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin.</p>
+    <p>© <span th:text="${currentYear}">2025</span> Personal Trainer App. Tüm hakları saklıdır.</p>
+  </div>
+</div>
+</body>
+</html>
